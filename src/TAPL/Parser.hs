@@ -1,7 +1,6 @@
 module TAPL.Parser where
 
 import ClassyPrelude
-import Control.Applicative ((*>), (<*))
 import TAPL.Expr
 import Text.Parsec hiding ((<|>))
 

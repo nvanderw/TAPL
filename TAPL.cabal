@@ -16,9 +16,11 @@ build-type:          Simple
 cabal-version:       >=1.10
 
 executable TAPL
-  main-is:             src/Main.hs
-  -- other-modules:       
-  other-extensions:    NoImplicitPrelude
+  main-is:             Main.hs
+  default-extensions:  NoImplicitPrelude, FlexibleContexts, DeriveGeneric, OverloadedStrings
+  -- other-modules:
+  -- other-extensions:
+  ghc-options:         -Wall -fno-warn-unused-do-bind
   build-depends:       base >=4.6 && <4.7, classy-prelude, parsec
-  -- hs-source-dirs:      
+  hs-source-dirs:      src/
   default-language:    Haskell2010
