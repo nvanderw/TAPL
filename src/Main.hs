@@ -2,9 +2,8 @@ module Main where
 
 import ClassyPrelude
 
-import TAPL.Parser
-import TAPL.Expr
-import TAPL.Eval
+import Test.HUnit
+import TAPL.Test.Parser
 
 main :: IO ()
-main = return ()
+main = void $ runTestTT testIdent
