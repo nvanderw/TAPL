@@ -17,7 +17,8 @@ cabal-version:       >=1.10
 
 executable TAPL
   main-is:             Main.hs
-  default-extensions:  NoImplicitPrelude, FlexibleContexts, DeriveGeneric, OverloadedStrings
+  default-extensions:  NoImplicitPrelude, FlexibleContexts, FlexibleInstances,
+                       DeriveGeneric, OverloadedStrings
   -- other-modules:
   -- other-extensions:
   ghc-options:         -Wall -fno-warn-unused-do-bind

@@ -3,7 +3,7 @@ module Main where
 import ClassyPrelude
 
 import Test.HUnit
-import qualified TAPL.Test.Parser as Parser
+import TAPL.Test
 
 main :: IO ()
-main = void $ runTestTT Parser.tests
+main = void $ runTestTT tests
