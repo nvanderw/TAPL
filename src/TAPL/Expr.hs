@@ -10,7 +10,7 @@ data Expr = EIdent Ident
           | EApp Expr Expr
           | ELit Val deriving (Read, Show, Eq, Ord, Generic)
 
-data Val = VInt Int deriving (Read, Show, Eq, Ord, Generic)
+data Val = VInt Int | VLambda Ident Expr deriving (Read, Show, Eq, Ord, Generic)
 
 class Pretty a where
     pretty :: a -> Text
@@ -23,3 +23,4 @@ instance Pretty Expr where
 
 instance Pretty Val where
     pretty (VInt n) = pack . show $ n
+    pretty (VLambda x e) = pretty $ ELambda x e
