@@ -1,4 +1,4 @@
-module TAPL.Test.Parser (allTests) where
+module TAPL.Test.Parser (tests) where
 
 import ClassyPrelude
 
@@ -10,28 +10,22 @@ import TAPL.Parser
 parseExpr :: ByteString -> Either ParseError Expr
 parseExpr = parse expr "test"
 
-testIdent :: Test
-testIdent = TestCase $ case parseExpr "x" of
-    Left err -> assertFailure . show $ err
-    Right tree -> (EIdent "x") @=? tree
+tests :: Test
+tests = "Parser" ~: [
+    ("Identifier" ~:) . TestCase $ case parseExpr "x" of
+        Left err -> assertFailure . show $ err
+        Right tree -> (EIdent "x") @=? tree,
 
-testLambda :: Test
-testLambda = TestCase $ case parseExpr "\\x.[x]" of
-    Left err -> assertFailure . show $ err
-    Right tree -> (ELambda "x" (EIdent "x")) @=? tree
+    ("Lambda" ~:) . TestCase $ case parseExpr "\\x.[x]" of
+        Left err -> assertFailure . show $ err
+        Right tree -> (ELambda "x" (EIdent "x")) @=? tree,
 
-testApp1 :: Test
-testApp1 = TestCase $ case parseExpr "(x y)" of
-    Left err -> assertFailure . show $ err
-    Right tree -> (EApp (EIdent "x") (EIdent "y")) @=? tree
 
-testApp2 :: Test
-testApp2 = TestCase $ case parseExpr "(x)" of
-    Left _ -> return ()
-    Right _ -> assertFailure "Parsing should fail on unary application"
+    "Application" ~: [
+        TestCase $ case parseExpr "(x y)" of
+            Left err -> assertFailure . show $ err
+            Right tree -> (EApp (EIdent "x") (EIdent "y")) @=? tree,
 
-appTests :: Test
-appTests = TestList [testApp1, testApp2]
-
-allTests :: Test
-allTests = TestList [testIdent, testLambda, appTests]
+        TestCase $ case parseExpr "(x)" of
+            Left _ -> return ()
+            Right _ -> assertFailure "Parsing should fail on unary application"]]
