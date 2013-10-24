@@ -1,8 +1,8 @@
-module TAPL.Eval where
+module TAPL.Untyped.Eval where
 
 import ClassyPrelude
 
-import TAPL.Expr
+import TAPL.Untyped.Expr
 
 substitute :: Ident -> Val -> Expr -> Expr
 substitute x v e = case e of

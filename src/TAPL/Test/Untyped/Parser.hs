@@ -1,11 +1,11 @@
-module TAPL.Test.Parser (tests) where
+module TAPL.Test.Untyped.Parser (tests) where
 
 import ClassyPrelude
 
 import Text.Parsec
 import Test.HUnit
-import TAPL.Expr
-import TAPL.Parser
+import TAPL.Untyped.Expr
+import TAPL.Untyped.Parser
 
 parseExpr :: ByteString -> Either ParseError Expr
 parseExpr = parse expr "test"

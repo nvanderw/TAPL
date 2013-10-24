@@ -1,7 +1,7 @@
-module TAPL.Parser where
+module TAPL.Untyped.Parser where
 
 import ClassyPrelude
-import TAPL.Expr
+import TAPL.Untyped.Expr
 import Text.Parsec hiding ((<|>))
 
 padded :: Stream s m Char => ParsecT s u m a -> ParsecT s u m a

@@ -1,4 +1,4 @@
-module TAPL.Expr where
+module TAPL.Untyped.Expr where
 
 import ClassyPrelude
 import GHC.Generics

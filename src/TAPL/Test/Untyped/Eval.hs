@@ -1,10 +1,10 @@
-module TAPL.Test.Eval (tests) where
+module TAPL.Test.Untyped.Eval (tests) where
 
 import ClassyPrelude
 
 import Test.HUnit
-import TAPL.Eval
-import TAPL.Expr
+import TAPL.Untyped.Eval
+import TAPL.Untyped.Expr
 
 tests :: Test
 tests = "Eval" ~: [
