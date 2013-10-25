@@ -30,4 +30,5 @@ typecheck env (TEApp e1 e2) = do
         _ -> Left $ "Expected function type instead of " ++ (pretty τ1)
 
 typecheck _ (TELit (VInt _)) = return $ TBase BTInt
+typecheck _ (TELit VUnit) = return $ TBase BTUnit
 typecheck _ e = Left $ "Could not typecheck expression: " <> (pretty e)

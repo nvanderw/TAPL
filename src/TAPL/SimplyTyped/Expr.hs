@@ -3,9 +3,11 @@ module TAPL.SimplyTyped.Expr where
 import ClassyPrelude
 import TAPL.Untyped.Expr
 
-data BaseType = BTInt deriving (Read, Show, Eq, Ord)
+data BaseType = BTInt
+              | BTUnit deriving (Read, Show, Eq, Ord)
 
 data Type = TBase BaseType
+          | TUnit
           | TFunc Type Type -- Function A -> B
           deriving (Read, Show, Eq, Ord)
 
