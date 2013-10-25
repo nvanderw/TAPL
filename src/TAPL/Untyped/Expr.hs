@@ -24,3 +24,6 @@ instance Pretty Expr where
 instance Pretty Val where
     pretty (VInt n) = pack . show $ n
     pretty (VLambda x e) = pretty $ ELambda x e
+
+class Erase a where
+    erase :: a -> Expr
